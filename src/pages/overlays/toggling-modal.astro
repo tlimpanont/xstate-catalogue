@@ -1,0 +1,11 @@
+---
+import { togglingModalMachine } from '@components/machines/modals/togglingModalMachine';
+import { TogglingModalExample } from '@components/overlays/TogglingModalExample';
+import Layout from '@layouts/Layout.astro';
+import XstateLayout from '@layouts/XstateLayout.astro';
+import { Code, Debug } from 'astro/components';
+---
+
+<XstateLayout title="Modals - Simple toggle state">
+  <TogglingModalExample client:load />
+</XstateLayout>
