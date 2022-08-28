@@ -1,0 +1,19 @@
+---
+import { CodeTabs } from '@components/CodeTabs';
+import { FetchServiceExample } from '@components/FetchServiceExample';
+import XstateLayout from '@layouts/XstateLayout.astro';
+import { readFile } from 'node:fs/promises';
+
+const uiCode = await readFile('src/components/FetchServiceExample.tsx');
+
+const machineCode = await readFile('src/machines/fetchServiceMachine.ts');
+---
+
+<XstateLayout title="FetchService pattern">
+  <FetchServiceExample client:load />
+  <CodeTabs
+    client:load
+    uiCode={uiCode.toString()}
+    machineCode={machineCode.toString()}
+  />
+</XstateLayout>

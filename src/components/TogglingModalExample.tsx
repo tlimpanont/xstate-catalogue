@@ -2,7 +2,7 @@ import { useMachine } from '@xstate/react';
 import { Fragment, useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { CheckCircleOutline } from '@mui/icons-material';
-import { togglingModalMachine } from '../machines/modals/togglingModalMachine';
+import { togglingModalMachine } from '@machines/togglingModalMachine';
 const messages = [
   {
     id: 1,

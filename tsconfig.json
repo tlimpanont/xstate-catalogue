@@ -11,6 +11,12 @@
       ],
       "@pages/*": [
         "src/pages/*"
+      ],
+      "@machines/*": [
+        "src/machines/*"
+      ],
+      "@services/*": [
+        "src/services/*"
       ]
     }
   }

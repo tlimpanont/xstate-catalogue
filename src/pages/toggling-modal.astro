@@ -1,0 +1,19 @@
+---
+import { TogglingModalExample } from '@components/TogglingModalExample';
+import XstateLayout from '@layouts/XstateLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { CodeTabs } from '@components/CodeTabs';
+
+const uiCode = await readFile('src/components/TogglingModalExample.tsx');
+
+const machineCode = await readFile('src/machines/togglingModalMachine.ts');
+---
+
+<XstateLayout title="Modals - Simple toggle state">
+  <TogglingModalExample client:load />
+  <CodeTabs
+    client:load
+    uiCode={uiCode.toString()}
+    machineCode={machineCode.toString()}
+  />
+</XstateLayout>
