@@ -33,7 +33,7 @@ export const MachinesOverview = () => {
                   <div className="font-medium text-lg leading-6 space-y-1">
                     <h3>Modal</h3>
                     <a
-                      href={'/overlays/toggling-modal'}
+                      href={'overlays/toggling-modal'}
                       className="text-sky-600"
                     >
                       How to toggle a modal open/close state
