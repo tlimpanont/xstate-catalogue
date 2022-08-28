@@ -1,9 +1,9 @@
 /* This example requires Tailwind CSS v2.0+ */
 import { ChakraProvider } from '@chakra-ui/react';
-import { Disclosure, Menu, Transition } from '@headlessui/react';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline';
-import { FC, Fragment, useEffect } from 'react';
+import { Disclosure } from '@headlessui/react';
+import { BarChartOutlined, CheckroomSharp } from '@mui/icons-material';
 import { inspect } from '@xstate/inspect';
+import { FC, useEffect } from 'react';
 
 const user = {
   name: 'Tom Cook',
@@ -70,12 +70,12 @@ export const Application: FC = ({ children }) => {
                     <Disclosure.Button className="bg-white inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
-                        <XMarkIcon
+                        <BarChartOutlined
                           className="block h-6 w-6"
                           aria-hidden="true"
                         />
                       ) : (
-                        <Bars3Icon
+                        <CheckroomSharp
                           className="block h-6 w-6"
                           aria-hidden="true"
                         />
