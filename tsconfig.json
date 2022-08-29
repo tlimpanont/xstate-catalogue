@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "module": "CommonJS",
     "baseUrl": ".",
     "paths": {
       "@components/*": [

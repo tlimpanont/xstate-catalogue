@@ -5,7 +5,9 @@ export type FetchServiceMachineContext = {
   data: any;
 };
 export const fetchServiceMachineModel = createModel(
-  {} as FetchServiceMachineContext,
+  {
+    data: [],
+  } as FetchServiceMachineContext,
   {
     events: {
       FETCH: (url: string) => ({ url }),
