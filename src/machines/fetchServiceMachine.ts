@@ -2,12 +2,11 @@ import { createModel } from 'xstate/lib/model';
 import { fetchService } from '@services/fetchService';
 
 export type FetchServiceMachineContext = {
-  data: any;
+  data?: any;
+  error?: any;
 };
 export const fetchServiceMachineModel = createModel(
-  {
-    data: [],
-  } as FetchServiceMachineContext,
+  {} as FetchServiceMachineContext,
   {
     events: {
       FETCH: (url: string) => ({ url }),
@@ -43,7 +42,7 @@ export const fetchServiceMachine = fetchServiceMachineModel.createMachine(
       isError: {
         entry: fetchServiceMachineModel.assign((_context, event) => {
           return {
-            data: event.data,
+            error: event.data,
           };
         }),
         on: {
@@ -54,6 +53,7 @@ export const fetchServiceMachine = fetchServiceMachineModel.createMachine(
         entry: fetchServiceMachineModel.assign((_context, event) => {
           return {
             data: event.data,
+            error: undefined,
           };
         }),
         on: {
