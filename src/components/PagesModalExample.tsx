@@ -136,7 +136,7 @@ export const PagesModalExample: FC<PagesModalExampleProps> = () => {
           })
         ) : (
           <SimpleCard
-            title="Well done, the corect answer is: "
+            title="Well done, the correct answer is: "
             content={String(state.context.givenAnswer)}
             subtitle="(machine flow is completed)"
           />
