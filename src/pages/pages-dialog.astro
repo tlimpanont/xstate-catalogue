@@ -1,0 +1,19 @@
+---
+import { PagesModalExample } from '@components/PagesModalExample';
+import XstateLayout from '@layouts/XstateLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { CodeTabs } from '@components/CodeTabs';
+
+const uiCode = await readFile('src/components/PagesModalExample.tsx');
+
+const machineCode = await readFile('src/machines/pagesWithDialogMachine.ts');
+---
+
+<XstateLayout title="Multiple pages with confirmation dialog">
+  <PagesModalExample client:load />
+  <CodeTabs
+    client:load
+    uiCode={uiCode.toString()}
+    machineCode={machineCode.toString()}
+  />
+</XstateLayout>
