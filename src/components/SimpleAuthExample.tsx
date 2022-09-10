@@ -1,6 +1,5 @@
 import { authClientMachine } from '@machines/simpleAuthMachine';
 import { Button, CircularProgress, Typography } from '@mui/material';
-import { green } from '@mui/material/colors';
 import { useMachine } from '@xstate/react';
 import { FC } from 'react';
 
@@ -28,7 +27,7 @@ export const SimpleAuthExample: FC<SimpleAuthExampleProps> = () => {
           <CircularProgress
             size={24}
             sx={{
-              color: green[500],
+              color: '#00a152',
               position: 'absolute',
               top: '50%',
               left: '50%',
