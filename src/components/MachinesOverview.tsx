@@ -102,6 +102,36 @@ export const MachinesOverview = () => {
                     </div>
                   </div>
                 </li>
+
+                <li>
+                  <div className="flex items-center space-x-4 lg:space-x-6">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M7.5 21L3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5"
+                      />
+                    </svg>
+
+                    <div className="font-medium text-lg leading-6 space-y-1">
+                      <h3>invoking machine and send event</h3>
+                      <a
+                        href={'simple-authentication'}
+                        className="text-sky-600"
+                      >
+                        Request a token from AuthServer and respond back with a
+                        token
+                      </a>
+                    </div>
+                  </div>
+                </li>
               </ul>
             </div>
           </div>

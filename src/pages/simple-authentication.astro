@@ -1,0 +1,20 @@
+---
+import { PagesModalExample } from '@components/PagesModalExample';
+import XstateLayout from '@layouts/XstateLayout.astro';
+import { readFile } from 'node:fs/promises';
+import { CodeTabs } from '@components/CodeTabs';
+import { SimpleAuthExample } from '@components/SimpleAuthExample';
+
+const uiCode = await readFile('src/components/SimpleAuthExample.tsx');
+
+const machineCode = await readFile('src/machines/simpleAuthMachine.ts');
+---
+
+<XstateLayout title="Simple Authhentication machine">
+  <SimpleAuthExample client:load />
+  <CodeTabs
+    client:load
+    uiCode={uiCode.toString()}
+    machineCode={machineCode.toString()}
+  />
+</XstateLayout>
