@@ -1,19 +1,57 @@
-import { createMachine, send } from 'xstate';
-import { respond } from 'xstate/lib/actions';
+import { assign, createMachine, send } from 'xstate';
+import { pure, sendParent } from 'xstate/lib/actions';
 
-const authServerMachine = createMachine({
-  initial: 'waitingForCode',
-  states: {
-    waitingForCode: {
-      on: {
-        CODE: {
-          actions: respond({ type: 'TOKEN' }, { delay: 3000 }),
+const authServerMachine = createMachine(
+  {
+    initial: 'waitingForCode',
+    schema: {
+      services: {} as {
+        getToken: {
+          data: string;
+        };
+      },
+    },
+    states: {
+      waitingForCode: {
+        on: {
+          CODE: {
+            target: 'gettingToken',
+          },
         },
+      },
+      gettingToken: {
+        invoke: {
+          src: 'getToken',
+          onDone: 'success',
+          onError: 'failure',
+        },
+      },
+      failure: {},
+      success: {
+        entry: pure((context, event) => {
+          return sendParent(
+            { type: 'TOKEN', token: event.data },
+            { delay: 1500 }
+          );
+        }),
       },
     },
   },
-});
+  {
+    services: {
+      getToken: async () => {
+        const token = await fetch(
+          'https://www.uuidgenerator.net/api/version4'
+        ).then((res) => res.text());
+        return token;
+      },
+    },
+  }
+);
 export const authClientMachine = createMachine({
+  context: {
+    token: '',
+  },
   initial: 'idle',
   tsTypes: {} as import('./simpleAuthMachine.typegen').Typegen0,
   states: {
@@ -29,11 +67,13 @@ export const authClientMachine = createMachine({
       },
       entry: send('CODE', { to: 'auth-server' }),
       on: {
-        TOKEN: { target: 'authorized' },
+        TOKEN: {
+          target: 'idle',
+          actions: assign((context, event) => {
+            return { token: event.token };
+          }),
+        },
       },
-    },
-    authorized: {
-      type: 'final',
     },
   },
 });

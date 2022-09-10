@@ -11,18 +11,18 @@ export const SimpleAuthExample: FC<SimpleAuthExampleProps> = () => {
   return (
     <>
       <Typography variant="body1">
-        Invoke AuthServer Machine and wait for 3 seconds until the server
+        Invoke AuthServer Machine and wait for 1.5 seconds until the server
         responds back with a TOKEN
       </Typography>
       <Button
-        sx={{ width: 200 }}
+        sx={{ width: 300 }}
         disabled={loading}
         variant="contained"
         onClick={() => {
           send({ type: 'AUTH' });
         }}
       >
-        Authorize
+        Get token from server
         {loading && (
           <CircularProgress
             size={24}
@@ -37,6 +37,9 @@ export const SimpleAuthExample: FC<SimpleAuthExampleProps> = () => {
           />
         )}
       </Button>
+      <Typography variant="subtitle1">
+        {loading ? 'Getting token...' : state.context.token}
+      </Typography>
     </>
   );
 };

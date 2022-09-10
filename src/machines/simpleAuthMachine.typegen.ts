@@ -16,6 +16,6 @@ export interface Typegen0 {
   eventsCausingServices: {};
   eventsCausingGuards: {};
   eventsCausingDelays: {};
-  matchesStates: "authorized" | "authorizing" | "idle";
+  matchesStates: "authorizing" | "idle";
   tags: never;
 }
